@@ -27,13 +27,15 @@ Route::group(['prefix' => 'api','middleware' => ['web']], function () {
     Route::get('/countByOrderState','Api\OrderController@countByOrderState');
     //4-b t_order 按state统计数量，显示state名称对应数量
     Route::get('/countByOrderStateName','Api\OrderController@countByOrderStateName');
+
     //t_user 按village统计数量，显示村名称对应数量
     Route::get('/countByArea','Api\StatisticsController@countByArea');
+
     //b t_order_loan按bank_name统计数量，显示银行和数量
     Route::get('/getGroupByBankName','Api\OrderLoanController@getGroupByBankName');
     //c t_order_loan按state的“t_order_loan_state_0，t_order_loan_state_5”统计数量，显示“申请，审核通过”和数量
     Route::get('/getGroupByState','Api\OrderLoanController@getGroupByState');
 
-
-
+    //需要造个第三方调用表（包含调用次数），将1万条t_order中state为1的数据放入，每条调用1-10次范围的随机数，按t_order的type_name统计调用总次数
+    Route::get('/getThirdPartyCallNum','Api\ThirdPartyCallController@getThirdPartyCallNum');
 });
