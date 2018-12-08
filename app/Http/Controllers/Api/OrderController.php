@@ -65,7 +65,15 @@ class OrderController extends Controller
     public function countByName()
     {
         try{
-            return  $this->order->countByName();
+            $data=$this->order->countByName();
+            $res=[];
+            if($data){
+                foreach ($data as $v){
+                    $v['typename']=str_replace("办理", "", $v['typename']);
+                    $res[]=$v;
+                }
+            }
+            return $res ;
         }catch (\Exception $e){
             \Log::error($e->getMessage());
         }
@@ -85,7 +93,14 @@ class OrderController extends Controller
     {
         try{
             $data=$this->order->countByNameAndState();
-            return $data;
+            $res=[];
+            if($data){
+                foreach ($data as $v){
+                    $v['typename']=str_replace("办理", "", $v['typename']);
+                    $res[]=$v;
+                }
+            }
+            return $res;
         }catch (\Exception $e){
             \Log::error($e->getMessage());
         }
