@@ -5,91 +5,28 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>tongxin</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
+    <div id="links">
+       <p><a href="{{url('/api/notAcceptedBacklogProportion')}}">c t_order按t_zfbw.gd_name统计未受理（state为0）和积压（state非0）的比例 Not accepted</a></p>
+       <p><a href="{{url('/api/timeGap')}}">t_order按t_zfbw.gd_name统计updatetime有值的updatetime与createtime时间差的平均数</a></p>
+       <p><a href="{{url('/api/countByName')}}">t_order 按typename统计数量，显示类型名称对应数量</a></p>
+       <p><a href="{{url('/api/countByCreateTime')}}">t_order 按createtime统计近7个月数量，显示月份和数量</a></p>
+       <p><a href="{{url('/api/countByOrderState')}}">t_order 按typename统计受理后（state为1）的数量，显示类型名称对应数量</a></p>
+       <p><a href="{{url('/api/countByOrderStateName')}}">t_order 按state统计数量，显示state名称对应数量</a></p>
+       <p><a href="{{url('/api/countByArea')}}">t_user 按village统计数量，显示村名称对应数量</a></p>
+       <p><a href="{{url('/api/getGroupByBankName')}}">t_order_loan按bank_name统计数量，显示银行和数量</a></p>
+       <p><a href="{{url('/api/getGroupByState')}}">t_order_loan按state的“t_order_loan_state_0，t_order_loan_state_5”统计数量，显示“申请，审核通过”和数量</a></p>
+       <p><a href="{{url('/api/getThirdPartyCallNum')}}">需要造个第三方调用表（包含调用次数），将1万条t_order中state为1的数据放入，每条调用1-10次范围的随机数，按t_order的type_name统计调用总次数</a></p>
+    </div>
     </body>
 </html>
