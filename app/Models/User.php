@@ -14,4 +14,8 @@ class User extends Model
     {
         return static::query()->selectRaw('village,count(1) as num')->whereNotNull('village')->groupBy('village')->get()->toArray();
     }
+    public function orders()
+    {
+        return $this->hasMany("App\Models\Order",'uid','uid');
+    }
 }

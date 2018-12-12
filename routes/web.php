@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//Route::get('/test','TestController@test');
 Route::group(['prefix' => 'api','middleware' => ['web']], function () {
     //c t_order按t_zfbw.gd_name统计未受理（state为0）和积压（state非0）的比例 Not accepted
     Route::get('/notAcceptedBacklogProportion','Api\OrderController@notAcceptedBacklogProportion');
@@ -44,4 +45,6 @@ Route::group(['prefix' => 'api','middleware' => ['web']], function () {
 
     //需要造个第三方调用表（包含调用次数），将1万条t_order中state为1的数据放入，每条调用1-10次范围的随机数，按t_order的type_name统计调用总次数
     Route::get('/getThirdPartyCallNum','Api\ThirdPartyCallController@getThirdPartyCallNum');
+    //需要新建一个信用评分表，信用从t_user获取10000条数据（在t_order有数据的），信用评分从mysql函数pro_login 335-362行可以找到，显示“良好，优秀，一般”和数量
+    Route::get('/getUserCredit','Api\UserController@getUserCredit');
 });
